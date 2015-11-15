@@ -1,7 +1,8 @@
 <html>
 <head>
+<meta charset="utf-8"/>
 <style>
-#price {
+#current_price {
   text-align: center;
   font-size: 180px;
   width:100%;
@@ -18,16 +19,19 @@
   border: 1px solid green;
   margin: 1 auto;
 }
-
 </style>
 </head>
 <body>
-<div id="price">R$<span id="current">20,00</span></div>
+<div>Cotação atual:</div>
+<div id="current_price"></div>
 <div id="buttons">
-  <div class="button" id="freebeer">Free Beer</div>
-  <div class="button" id="donation">Donation</div>
+  <div class="button" id="freebeer">Comprar 1 cerveja <br/>(pagando quanto quiser!)</div>
+  <div class="button" id="donation">Comprar 1 cerveja sem afetar a cotação<br/>(excedente vira doação)</div>
 </div>
-<div id="status">-- status --</div>
+-- status --
+<div id="status"></div>
+<div>Temos <span id="estoque">muitas</span> cervejas na geladeira!</div>
+<div>O fundo de doações está em R$ <span id="fund">0,00</span> reais.</div>
 </body>
 <script src="breja.js"></script>
 </html>
