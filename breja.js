@@ -4,9 +4,11 @@ var donation = document.getElementById("donation");
 var stat = document.getElementById("status");
 var fund = document.getElementById("fund");
 var estoque = document.getElementById("estoque");
+var qto_falta = document.getElementById("qto_falta");
 
 var beers_available = 20;
 var costs = 100;
+var lucro_minimo = 200;
 var donation_fund = 0;
 var full_income = 0;
 var current_price = 0;
@@ -15,11 +17,11 @@ function round_money_value(v){
   return Math.floor(v*100)/100;
 }
 function update_price(){
-  if (costs - full_income <= 0){
+  if ((costs + lucro_minimo - full_income) <= 0){
       current_price = 0;
       current.innerHTML = "Free Beer!";
   } else {
-    current_price = (costs - full_income) / beers_available;
+    current_price = (costs + lucro_minimo - full_income) / beers_available;
     current.innerHTML = "R$ " + round_money_value(current_price);
   }
   
@@ -44,10 +46,11 @@ function pay(value, donation){
   stat.innerHTML = "voce pagou " + round_money_value(value) + " reais!";
   fund.innerHTML = round_money_value(donation_fund);
   estoque.innerHTML = round_money_value(beers_available);
+  qto_falta.innerHTML = round_money_value((costs + lucro_minimo) - full_income);
 }
 
 freebeer.onclick = function(){
-  var rnd_value = Math.round(Math.random() * current_price * 2);
+  var rnd_value = Math.min(20, Math.round(Math.random() * current_price * 2));
   pay(rnd_value, false);
 }
 
