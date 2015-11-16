@@ -8,7 +8,7 @@ var qto_falta = document.getElementById("qto_falta");
 
 var beers_available = 20;
 var costs = 100;
-var lucro_minimo = 200;
+var lucro_minimo = 100;
 var donation_fund = 0;
 var full_income = 0;
 var current_price = 0;
@@ -50,7 +50,7 @@ function pay(value, donation){
 }
 
 freebeer.onclick = function(){
-  var rnd_value = Math.min(20, Math.round(Math.random() * current_price * 2));
+  var rnd_value = 5 + Math.round(Math.random() * 15);
   pay(rnd_value, false);
 }
 
